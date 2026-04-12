@@ -1,6 +1,7 @@
 package edu.uoc.epcsd.course.application.rest.response;
 
 import edu.uoc.epcsd.course.domain.User;
+import edu.uoc.epcsd.course.domain.UserType;
 import lombok.*;
 
 @ToString
@@ -20,12 +21,15 @@ public final class GetUserResponse {
 
     private String phoneNumber;
 
+    private UserType type;
+
     public static GetUserResponse fromDomain(User user) {
         return GetUserResponse.builder()
                 .id(user.getId())
                 .fullName(user.getFullName())
                 .email(user.getEmail())
                 .phoneNumber(user.getPhoneNumber())
+                .type(user.getType())
                 .build();
     }
 }
