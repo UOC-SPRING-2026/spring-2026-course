@@ -31,6 +31,6 @@ public class User {
 
     @NotNull
     @Builder.Default
-    private UserType status = UserType.STUDENT;
+    private UserType type = UserType.STUDENT;
     
 }
