@@ -8,8 +8,6 @@ import java.util.List;
 
 import javax.validation.constraints.NotNull;
 
-import edu.uoc.epcsd.course.infrastructure.repository.jpa.EnrollmentEntity;
-
 @ToString
 @Getter
 @Setter
@@ -26,7 +24,7 @@ public class Course{
     private String instructor;
     
     @NotNull
-    private List<EnrollmentEntity> enrollment;
+    private List<Enrollment> enrollment;
  
     @NotNull
     private String title;
