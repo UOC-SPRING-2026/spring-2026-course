@@ -1,6 +1,7 @@
 package edu.uoc.epcsd.course.infrastructure.repository.jpa;
 
 import edu.uoc.epcsd.course.domain.CourseStatus;
+import edu.uoc.epcsd.course.domain.Enrollment;
 import edu.uoc.epcsd.course.domain.Course;
 import lombok.*;
 
@@ -68,7 +69,7 @@ public class CourseEntity implements DomainTranslatable<Course> {
     @JsonIgnore
     @OneToMany(mappedBy = "course")
     @Builder.Default
-    private List<EnrollmentEntity> enrollment = Collections.emptyList();;    
+    private List<Enrollment> enrollment = Collections.emptyList();;    
     
     public static CourseEntity fromDomain(Course course) {
         if (course == null) {
