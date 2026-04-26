@@ -32,7 +32,5 @@ public class CourseRepositoryImpl implements CourseRepository {
     //TODO closeEnrollmentCourse()
     //TODO closeGradeReports()
     //TODO enrollInCourse()
-    //TODO findCourses()
-    //TODO findCourses()
 	    
 }
