@@ -32,15 +32,11 @@ public class EnrollmentServiceImpl implements EnrollmentService {
             return enrollmentRepository.findEnrollmentByCourse(courseId);
     }
 
-    
     // TODO findAllEnrollment()
     // TODO getEnrollmentByStudent()
     // TODO createEnrollment()
     // TODO modifyEnrollment()
     // TODO enrollInCourse()
-    // TODO closeEnrollment()
-    // TODO enrollInCourse()
     // TODO closeCourse()
-
    
 }
