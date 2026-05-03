@@ -5,9 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import edu.uoc.epcsd.course.domain.Enrollment;
-import edu.uoc.epcsd.course.domain.exception.UserNotFoundException;
 import edu.uoc.epcsd.course.domain.repository.EnrollmentRepository;
-import edu.uoc.epcsd.course.domain.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,7 +17,6 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
 
     private final SpringDataEnrollmentRepository jpaRepository;
     private final SpringDataCourseRepository jpaCourseRepository;
-    private final UserRepository userRepository;
 	
     @Override
     public Optional<Enrollment> getEnrollmentById(Long Id) {
@@ -44,21 +41,17 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
     }	   
 
     @Override
-    public EnrollmentEntity createEnrollment(Enrollment enrollment) {
+    public Long createEnrollment(Enrollment enrollment) {
 
         EnrollmentEntity enrollmentEntity = EnrollmentEntity.fromDomain(enrollment);
         enrollmentEntity.setCourse(jpaCourseRepository.findById(enrollment.getCourseId()).orElseThrow(IllegalArgumentException::new));
 
-        return jpaRepository.save(enrollmentEntity);
+        return jpaRepository.save(enrollmentEntity).getId();
     }
 
     @Override
-    public EnrollmentEntity updateEnrollment(Enrollment enrollment) {
-		
-        if (!userRepository.findUserByEmail(enrollment.getStudent())) {
-            throw new UserNotFoundException(enrollment.getStudent());
-        }
-        
+    public Long updateEnrollment(Enrollment enrollment) {
+
         EnrollmentEntity enrollmentEntity = jpaRepository.findById(enrollment.getId()).orElseThrow(IllegalArgumentException::new);
         
         enrollmentEntity.setStudent(enrollment.getStudent());        
@@ -66,7 +59,7 @@ public class EnrollmentRepositoryImpl implements EnrollmentRepository {
         enrollmentEntity.setStatus(enrollment.getStatus());
         enrollmentEntity.setEnrollmentDate(enrollment.getEnrollmentDate());         
         
-        return jpaRepository.save(enrollmentEntity);
+        return jpaRepository.save(enrollmentEntity).getId();
 
     }	
  

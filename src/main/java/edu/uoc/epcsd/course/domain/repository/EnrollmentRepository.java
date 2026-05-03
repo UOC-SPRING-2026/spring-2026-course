@@ -1,7 +1,6 @@
 package edu.uoc.epcsd.course.domain.repository;
 
 import edu.uoc.epcsd.course.domain.Enrollment;
-import edu.uoc.epcsd.course.infrastructure.repository.jpa.EnrollmentEntity;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,10 +13,11 @@ public interface EnrollmentRepository {
     
     Optional<Enrollment> findEnrollmentByStudent(String userEmail);
     
-    EnrollmentEntity createEnrollment(Enrollment enrollment);
+    Long createEnrollment(Enrollment enrollment);
 
-    EnrollmentEntity updateEnrollment(Enrollment enrollment);
+    Long updateEnrollment(Enrollment enrollment);
 
 	Optional<Enrollment> getEnrollmentById(Long Id);
 
 }
+
